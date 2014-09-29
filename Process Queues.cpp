@@ -1,5 +1,6 @@
 #include "PCB.h"
-#include "Command.h"
+#include <iostream>
+
 
 
 
@@ -150,8 +151,51 @@ void InsertPCB(Queue *Target, PCB *inserted)
 
 void RemovePCB(PCB *removed)
 {
-    removed = FindPCB(removed->processName);
+    QueueNode *traversePtr = Ready->head;
+    if(Ready->head->pcb->processName == removed->processName)      //check Ready Queue's head
+    {
+        Ready->head->next->prev = NULL;
+        Ready->head->next = NULL;
 
+    }
+    else
+    {
+        traversePtr = Ready->head->next;
+        while (traversePtr->pcb != NULL && traversePtr->next != NULL)      //while not at the end
+        {
+            if(traversePtr->pcb->processName == removed->processName)
+            {
+                traversePtr->prev->next = traversePtr->next;
+                traversePtr->next->prev = traversePtr->prev;
+                traversePtr->next = NULL;
+                traversePtr->prev = NULL;                                  //found same name
+            }
+            traversePtr = traversePtr->next;                              //move forward
+        }
+    }
+
+    if(Blocked->head->pcb->processName == removed->processName)      //check Blocked Queue's head
+    {
+        Blocked->head->next->prev = NULL;
+        Blocked->head->next = NULL;
+    }
+    else
+    {
+        traversePtr = Blocked->head->next;
+        while (traversePtr->pcb != NULL && traversePtr->next != NULL)      //while not at the end
+        {
+            if(traversePtr->pcb->processName == removed->processName)
+            {
+                traversePtr->prev->next = traversePtr->next;
+                traversePtr->next->prev = traversePtr->prev;
+                traversePtr->next = NULL;
+                traversePtr->prev = NULL;                                //found same name
+            }
+            traversePtr = traversePtr->next;                              //move forward
+        }
+    }
+
+    return;
 }
 
 
