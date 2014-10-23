@@ -3,6 +3,10 @@
 
 
 
+#define APPTYPE 0
+#define SYSTYPE 1
+#include <string>
+
 
 
 
@@ -21,6 +25,8 @@ struct Queue
     QueueNode *head;
     QueueNode *tail;
 };
+
+
 
 PCB * FindPCB(std::string processName);
 PCB * AllocatePCB();
@@ -49,6 +55,10 @@ void FreePCB(PCB *pcb)
     delete pcb;
     return;
 }
+
+
+
+
 
 PCB * SetupPCB(std::string processName, int priority, int processClass)
 {
@@ -147,6 +157,8 @@ void InsertPCB(Queue *Target, PCB *inserted)
             myNodePtr->prev = traversePtr;
         }
     }
+
+    Target->nodeCount++;
 }
 
 void RemovePCB(PCB *removed)

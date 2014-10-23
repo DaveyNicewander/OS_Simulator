@@ -10,7 +10,6 @@
 
 
 #include "windows.h"
-#include "PCB.h"
 #include "Process Queues.cpp"
 
 
@@ -86,6 +85,8 @@ public:
         cout << "Files: Displays a list of files in Fractal's current directory." << endl;
         cout << endl;
         cout << "Help: Provides help menu." << endl;
+        cout << endl;
+        cout << "History: Displays command history." << endl;
         cout << endl;
     }
 

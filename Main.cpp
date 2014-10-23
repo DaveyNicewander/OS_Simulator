@@ -1,12 +1,13 @@
 #include "Command.h"
-#include "PCB.h"
 #include <string>
+#include <vector>
 
 void displayWelcome();                  //DISPLAYS OPENING WELCOME MESSAGE
 void wait(int sec);                     //PAUSES FOR 'SEC' NUMBER OF SECONDS
 void clearScreen(int delay);            //DELAYS FOR 'DELAY' NUMBER OF SECONDS, THEN CLEARS SCREEN
 void runSession(bool session);          //STARTS AND RUNS SESSION UNTIL COMPLETION
 bool displayMainMenu(bool session);     //DISPLAYS MAIN MENU OPTIONS
+void displayHistory();                      //EXTRA CREDIT, DISPLAYS HISTORY OF COMMANDS
 
 
 
@@ -14,7 +15,7 @@ bool dateChanged = false;
 int year = 0;
 int month = 0;
 int day = 0;
-
+vector<string> history;
 
 using namespace std;
 int main()
@@ -88,11 +89,13 @@ bool displayMainMenu(bool session)
     cout << "[D] - Date" << endl;
     cout << "[F] - Files" << endl;
     cout << "[H] - Help" << endl;
+    cout << "[K] - History" << endl;
     cout << "[E] - Exit" << endl;
     cin >> userChoice;
 
     if (userChoice == "V" || userChoice == "v")
     {
+        history.push_back(userChoice);
         clearScreen(0);
         control.displayVersion();
         cout << "Press enter to return to menu...";
@@ -103,6 +106,7 @@ bool displayMainMenu(bool session)
 
     if (userChoice == "D" || userChoice == "d")
     {
+        history.push_back(userChoice);
         clearScreen(0);
         control.displayDate(dateChanged, year, month, day);
         cout << "------------------------" << endl;
@@ -112,6 +116,7 @@ bool displayMainMenu(bool session)
 
         if (userChoice == "S" || userChoice == "s")
         {
+            history.push_back(userChoice);
             dateChanged = true;
             clearScreen(0);
             control.setDate(year, month, day);
@@ -133,6 +138,7 @@ bool displayMainMenu(bool session)
 
     if (userChoice == "F" || userChoice == "f")
     {
+        history.push_back(userChoice);
         clearScreen(0);
         control.displayDirectory();
         cout << "Press enter to return to menu...";
@@ -143,6 +149,7 @@ bool displayMainMenu(bool session)
 
     if (userChoice == "H" || userChoice == "h")
     {
+        history.push_back(userChoice);
         clearScreen(0);
         control.displayHelp();
         cout << "Press enter to return to menu...";
@@ -156,8 +163,21 @@ bool displayMainMenu(bool session)
         clearScreen(0);
         cout << "Are you sure you want to exit? (Y/N)" << endl;
         cin >> userChoice;
+        history.push_back(userChoice);
         if (userChoice == "Y" || userChoice == "y")
             session = false;
+            history.push_back(userChoice);
+        clearScreen(0);
+    }
+
+    if (userChoice == "K" || userChoice == "k")
+    {
+        history.push_back(userChoice);
+        clearScreen(0);
+        displayHistory();
+        cout << "Press enter to return to menu...";
+        cin.sync();
+        cin.get();
         clearScreen(0);
     }
 
@@ -168,6 +188,17 @@ bool displayMainMenu(bool session)
     }
 
     return session;
+}
+
+void displayHistory()
+{
+    cout << "Session Command History" << endl;
+    cout << "-------------------------------"<< endl;
+
+    for(int i = 0; i<history.size(); i++)
+    {
+        cout << history[i] << ", ";
+    }
 }
 
 

@@ -2,7 +2,6 @@
 #define PCB_H_INCLUDED
 
 
-
 #define APPTYPE 0
 #define SYSTYPE 1
 #include <string>
