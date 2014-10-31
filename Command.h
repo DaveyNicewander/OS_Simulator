@@ -7,10 +7,12 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include <string>
+#include <fstream>
+
 
 
 #include "windows.h"
-#include "Process Queues.cpp"
+#include "Process Queues.h"
 
 
 
@@ -86,8 +88,11 @@ public:
         cout << endl;
         cout << "Help: Provides help menu." << endl;
         cout << endl;
-        cout << "History: Displays command history." << endl;
+        cout << "History: Displays command history of current session." << endl;
         cout << endl;
+        cout << "Read Scheduler File: Reads in a file with information to schedule a process." << endl;
+        cout << endl;
+
     }
 
     void displayDirectory()
@@ -126,6 +131,7 @@ public:
     }
 
     void CreatePCB();
+    void readFile();
 
 private:
 
@@ -156,6 +162,43 @@ void Command::CreatePCB()
     InsertPCB(Ready,pcb);
 }
 
+void Command::readFile()
+{
+    string fileName;
+    string processName;
+    char processClass;
+    int priority,memory,timeRemaining,timeArrived,perOfCpu;
+    ifstream inputFile;
+    cout << "Enter file name: ";
+    cin >> fileName;
+    inputFile.open(fileName.c_str());
+    if (inputFile.fail())
+    {
+        cout << "FILE DOES NOT EXIST! (Check spelling and include file extension)" << endl;
+    }
+    else
+    {
+        inputFile >> processName;
+        while (inputFile)
+        {
+            inputFile >> processClass;
+            inputFile >> priority >> memory >> timeRemaining
+                         >> timeArrived >> perOfCpu;
+        }
+    inputFile.close();
+    }
+    cout << endl << endl;
+    cout << "Process Information" << endl;
+    cout << "-----------------------" << endl;
+    cout << "Process Name: " << processName << endl;
+    cout << "Process Class: " << processClass << endl;
+    cout << "Memory: " << memory << endl;
+    cout << "Time Remaining: " << endl;
+    cout << "Time Arrived: " << timeArrived << endl;
+    cout << "Percentage of CPU: " << perOfCpu << endl;
+
+    return;
+}
 
 
 #endif // COMMAND_H_INCLUDED

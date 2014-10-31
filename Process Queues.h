@@ -1,3 +1,6 @@
+#ifndef PROCESS_QUEUES_H_INCLUDED
+#define PROCESS_QUEUES_H_INCLUDED
+
 #include "PCB.h"
 #include <iostream>
 
@@ -6,8 +9,6 @@
 #define APPTYPE 0
 #define SYSTYPE 1
 #include <string>
-
-
 
 
 
@@ -210,13 +211,4 @@ void RemovePCB(PCB *removed)
     return;
 }
 
-
-
-
-
-
-
-
-
-
-
+#endif // PROCESS_QUEUES_H_INCLUDED

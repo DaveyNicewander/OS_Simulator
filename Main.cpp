@@ -90,6 +90,7 @@ bool displayMainMenu(bool session)
     cout << "[F] - Files" << endl;
     cout << "[H] - Help" << endl;
     cout << "[K] - History" << endl;
+    cout << "[G] - Read Scheduler File" << endl;
     cout << "[E] - Exit" << endl;
     cin >> userChoice;
 
@@ -126,6 +127,7 @@ bool displayMainMenu(bool session)
             cout << "[S] - Set Date" << endl;
             cout << "[M] - Return To Menu" << endl;
             cin >> userChoice;
+            history.push_back(userChoice);
         }
         else
         {
@@ -160,13 +162,17 @@ bool displayMainMenu(bool session)
 
     if (userChoice == "E" || userChoice == "e")
     {
+        history.push_back(userChoice);
         clearScreen(0);
         cout << "Are you sure you want to exit? (Y/N)" << endl;
         cin >> userChoice;
-        history.push_back(userChoice);
         if (userChoice == "Y" || userChoice == "y")
+        {
             session = false;
-            history.push_back(userChoice);
+            clearScreen(0);
+            return session;
+        }
+        history.push_back(userChoice);
         clearScreen(0);
     }
 
@@ -175,6 +181,17 @@ bool displayMainMenu(bool session)
         history.push_back(userChoice);
         clearScreen(0);
         displayHistory();
+        cout << "Press enter to return to menu...";
+        cin.sync();
+        cin.get();
+        clearScreen(0);
+    }
+
+    if (userChoice == "G" || userChoice == "g")
+    {
+        history.push_back(userChoice);
+        clearScreen(0);
+        control.readFile();
         cout << "Press enter to return to menu...";
         cin.sync();
         cin.get();

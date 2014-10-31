@@ -1,0 +1,63 @@
+# depslib dependency file v1.0
+1411874673 source:c:\users\davey\desktop\school\opsys\fractalos\fractal operating system simulator\main.cpp
+	"Command.h"
+	"PCB.h"
+	<string>
+
+1411876944 c:\users\davey\desktop\school\opsys\fractalos\fractal operating system simulator\command.h
+	<ctime>
+	<iostream>
+	<dirent.h>
+	<stdlib.h>
+	<string>
+	"windows.h"
+	"Process Queues.cpp"
+
+1409336637 c:\users\davey\desktop\school\opsys\fractalos\fractal operating system simulator\tools.cpp
+	<iostream>
+	<iomanip>
+
+1409336637 source:c:\users\davey\desktop\school\opsys\fractalos\fractal operating system simulator\tools.cpp
+	<iostream>
+	<iomanip>
+
+1411876865 c:\users\davey\desktop\school\opsys\fractalos\fractal operating system simulator\process queues.cpp
+	"PCB.h"
+	"Command.h"
+
+1410513229 c:\users\davey\desktop\school\opsys\fractalos\fractal operating system simulator\pcb.h
+	<string>
+
+1414736082 source:c:\users\user1\documents\codeblocks\fractalos\fractal operating system simulator\main.cpp
+	"Command.h"
+	<string>
+	<vector>
+
+1414736287 c:\users\user1\documents\codeblocks\fractalos\fractal operating system simulator\command.h
+	<ctime>
+	<iostream>
+	<dirent.h>
+	<stdlib.h>
+	<string>
+	<fstream>
+	"windows.h"
+	"Process Queues.h"
+
+1414040102 c:\users\user1\documents\codeblocks\fractalos\fractal operating system simulator\pcb.h
+	<string>
+
+1414040715 c:\users\user1\documents\codeblocks\fractalos\fractal operating system simulator\process queues.cpp
+	"PCB.h"
+	<iostream>
+	<string>
+
+1414040715 source:c:\users\user1\documents\codeblocks\fractalos\fractal operating system simulator\process queues.cpp
+	"PCB.h"
+	<iostream>
+	<string>
+
+1414733311 c:\users\user1\documents\codeblocks\fractalos\fractal operating system simulator\process queues.h
+	"PCB.h"
+	<iostream>
+	<string>
+
